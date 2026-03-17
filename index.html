@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrandGenius AI – AI-Powered Branding Platform</title>
+  <meta name="description"
+    content="BrandGenius AI helps startups and businesses build, analyze, and optimize their brand strategy using intelligent automation and Generative AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Animated Background -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">BrandGenius<span class="logo-ai">AI</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#competitor" class="nav-link" data-section="competitor">Competitor Intel</a></li>
+        <li><a href="#brand-strategy" class="nav-link" data-section="brand-strategy">Brand Strategy</a></li>
+        <li><a href="#recommendations" class="nav-link" data-section="recommendations">Recommendations</a></li>
+        <li><a href="#influencer" class="nav-link" data-section="influencer">Influencer Hub</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-secondary" id="demoBtn">View Demo</button>
+        <button class="btn-icon" id="settingsBtn" title="Groq API Settings" onclick="toggleSettings()">⚙️ API
+          Key</button>
+        <button class="btn-primary" id="getStartedBtn">Get Started Free</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== GROQ SETTINGS PANEL ===== -->
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-inner">
+      <div class="settings-left">
+        <div class="groq-logo">⚡ Groq AI</div>
+        <p class="settings-desc">Enter your Groq API key to enable real AI responses across all modules.</p>
+      </div>
+      <div class="settings-right">
+        <div class="api-key-row">
+          <input type="password" id="groqApiKey" class="form-input api-key-input"
+            placeholder="gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" oninput="saveApiKey(this.value)" />
+          <button class="btn-secondary" onclick="toggleKeyVisibility()">👁</button>
+          <a href="https://console.groq.com/keys" target="_blank" class="btn-ghost get-key-btn">Get Free Key →</a>
+        </div>
+        <div class="api-status" id="apiStatus">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">No key set — using demo mode</span>
+        </div>
+      </div>
+      <button class="settings-close" onclick="toggleSettings()">✕</button>
+    </div>
+  </div>
+
+  <!-- ===== HOME / HERO SECTION ===== -->
+  <section class="section hero-section" id="home">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Powered by Generative AI
+      </div>
+      <h1 class="hero-title">
+        Your AI Branding<br />
+        <span class="gradient-text">Consultant</span>, On-Demand
+      </h1>
+      <p class="hero-subtitle">
+        Transform raw data into strategic brand insights. Build competitor intelligence, generate brand identities,
+        get AI recommendations, and connect with the right influencers — all in one powerful platform.
+      </p>
+      <div class="hero-cta">
+        <button class="btn-primary btn-large" onclick="scrollToSection('competitor')">
+          <span>Start Analyzing</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+        <button class="btn-ghost btn-large" onclick="scrollToSection('brand-strategy')">
+          Generate Brand Strategy
+        </button>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Brands Analyzed</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number">94%</div>
+          <div class="stat-label">Accuracy Rate</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number">3x</div>
+          <div class="stat-label">Faster Strategy</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Influencers Indexed</div>
+        </div>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="features-grid">
+        <div class="feature-card" onclick="scrollToSection('competitor')">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">🔍</div>
+          <h3>Competitor Intelligence</h3>
+          <p>NLP-driven analysis of competitor positioning, messaging, pricing, and emotional triggers.</p>
+          <span class="feature-link">Analyze Now →</span>
+        </div>
+        <div class="feature-card" onclick="scrollToSection('brand-strategy')">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">✨</div>
+          <h3>Brand Strategy Gen AI</h3>
+          <p>Generate brand names, taglines, value propositions, stories, and full visual identities.</p>
+          <span class="feature-link">Generate Brand →</span>
+        </div>
+        <div class="feature-card" onclick="scrollToSection('recommendations')">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">🎯</div>
+          <h3>Strategic Recommendations</h3>
+          <p>AI-driven market gap analysis, counter-positioning, pricing, and audience strategies.</p>
+          <span class="feature-link">Get Insights →</span>
+        </div>
+        <div class="feature-card" onclick="scrollToSection('influencer')">
+          <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">🤝</div>
+          <h3>Influencer Hub</h3>
+          <p>AI-matched influencer discovery, campaign ideas, and auto-generated outreach emails.</p>
+          <span class="feature-link">Find Influencers →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPETITOR INTELLIGENCE ===== -->
+  <section class="section" id="competitor">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" style="--badge-color: #667eea;">🔍 Competitor Intelligence</div>
+        <h2 class="section-title">Decode Your <span class="gradient-text">Competition</span></h2>
+        <p class="section-subtitle">AI-powered NLP analysis of competitor websites, pricing, social media & customer
+          reviews</p>
+      </div>
+
+      <div class="two-col">
+        <!-- Input Panel -->
+        <div class="card input-card">
+          <h3 class="card-title">Analyze a Competitor</h3>
+          <div class="form-group">
+            <label class="form-label">Competitor Website URL</label>
+            <input type="url" id="compUrl" class="form-input" placeholder="https://competitor.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Industry / Niche</label>
+            <select id="compIndustry" class="form-input form-select">
+              <option value="">Select industry...</option>
+              <option>Technology & SaaS</option>
+              <option>E-Commerce & Retail</option>
+              <option>Healthcare & Wellness</option>
+              <option>Finance & Fintech</option>
+              <option>Education & EdTech</option>
+              <option>Fashion & Beauty</option>
+              <option>Food & Beverage</option>
+              <option>Marketing & Agency</option>
+              <option>Real Estate</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Analysis Depth</label>
+            <div class="toggle-group">
+              <button class="toggle-btn active" data-depth="basic">Basic</button>
+              <button class="toggle-btn" data-depth="standard">Standard</button>
+              <button class="toggle-btn" data-depth="deep">Deep Dive</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Analysis Focus Areas</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-item"><input type="checkbox" checked /> Positioning Strategy</label>
+              <label class="checkbox-item"><input type="checkbox" checked /> Target Audience</label>
+              <label class="checkbox-item"><input type="checkbox" checked /> Emotional Triggers</label>
+              <label class="checkbox-item"><input type="checkbox" checked /> Pricing Techniques</label>
+              <label class="checkbox-item"><input type="checkbox" /> Content Style</label>
+              <label class="checkbox-item"><input type="checkbox" /> Social Presence</label>
+            </div>
+          </div>
+          <button class="btn-primary btn-full" id="analyzeCompBtn" onclick="runCompetitorAnalysis()">
+            <span class="btn-text">🔍 Run AI Analysis</span>
+            <div class="btn-loader hidden"></div>
+          </button>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="card results-card" id="compResults">
+          <div class="results-placeholder" id="compPlaceholder">
+            <div class="placeholder-icon">🔍</div>
+            <p>Enter a competitor URL and click "Run AI Analysis" to see deep strategic insights</p>
+          </div>
+          <div class="analysis-results hidden" id="compAnalysisResults">
+            <div class="result-header">
+              <h3 id="compName">Competitor Name</h3>
+              <div class="result-badges">
+                <span class="badge badge-purple" id="positioningBadge">Premium</span>
+                <span class="badge badge-blue" id="audienceBadge">B2B</span>
+              </div>
+            </div>
+            <div class="insights-grid">
+              <div class="insight-card">
+                <div class="insight-label">Positioning</div>
+                <div class="insight-value" id="insightPositioning">Premium market leader</div>
+                <div class="insight-bar">
+                  <div class="insight-bar-fill" style="width: 85%; background: #667eea;"></div>
+                </div>
+              </div>
+              <div class="insight-card">
+                <div class="insight-label">Target Audience</div>
+                <div class="insight-value" id="insightAudience">Mid-market B2B, 25–45yo decision makers</div>
+              </div>
+              <div class="insight-card">
+                <div class="insight-label">Emotional Triggers</div>
+                <div class="emotion-tags" id="emotionTags">
+                  <span class="emotion-tag">Trust</span>
+                  <span class="emotion-tag">FOMO</span>
+                  <span class="emotion-tag">Aspiration</span>
+                </div>
+              </div>
+              <div class="insight-card">
+                <div class="insight-label">Pricing Strategy</div>
+                <div class="insight-value" id="insightPricing">Tiered SaaS with annual anchoring</div>
+              </div>
+            </div>
+            <div class="swot-grid">
+              <div class="swot-card strengths">
+                <div class="swot-label">💪 Strengths</div>
+                <ul class="swot-list" id="strengthsList">
+                  <li>Strong brand recognition</li>
+                  <li>Extensive feature set</li>
+                  <li>Active community</li>
+                </ul>
+              </div>
+              <div class="swot-card weaknesses">
+                <div class="swot-label">⚠️ Weaknesses</div>
+                <ul class="swot-list" id="weaknessesList">
+                  <li>High pricing barrier</li>
+                  <li>Complex onboarding</li>
+                  <li>Limited customization</li>
+                </ul>
+              </div>
+            </div>
+            <div class="opportunity-box" id="opportunityBox">
+              <div class="opportunity-label">🎯 Your Opportunity Gap</div>
+              <p id="opportunityText">Position as the affordable, easy-to-use alternative with superior onboarding and
+                flexibility for SMBs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRAND STRATEGY ===== -->
+  <section class="section alt-section" id="brand-strategy">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" style="--badge-color: #f5576c;">✨ Gen AI Engine</div>
+        <h2 class="section-title">Generate Your <span class="gradient-text-pink">Brand Identity</span></h2>
+        <p class="section-subtitle">NLP-powered generation of your entire brand DNA — from naming to voice to content
+          strategy</p>
+      </div>
+
+      <div class="brand-tabs">
+        <button class="brand-tab active" data-tab="identity">🏷️ Identity & Naming</button>
+        <button class="brand-tab" data-tab="voice">🎤 Voice & Messaging</button>
+        <button class="brand-tab" data-tab="content">📝 Content Creation</button>
+        <button class="brand-tab" data-tab="visual">🎨 Visual Identity</button>
+      </div>
+
+      <!-- Identity Tab -->
+      <div class="tab-content active" id="tab-identity">
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Brand Input</h3>
+            <div class="form-group">
+              <label class="form-label">What does your business do?</label>
+              <textarea class="form-input form-textarea" id="brandDesc"
+                placeholder="e.g. We help small restaurants manage orders, inventory, and customer loyalty through a simple mobile app..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Target Audience</label>
+              <input class="form-input" id="targetAudience" placeholder="e.g. Small restaurant owners aged 25-45" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Brand Personality</label>
+              <div class="personality-tags" id="personalityTags">
+                <span class="ptag" onclick="toggleTag(this)">Innovative</span>
+                <span class="ptag" onclick="toggleTag(this)">Trustworthy</span>
+                <span class="ptag" onclick="toggleTag(this)">Playful</span>
+                <span class="ptag" onclick="toggleTag(this)">Bold</span>
+                <span class="ptag" onclick="toggleTag(this)">Minimal</span>
+                <span class="ptag" onclick="toggleTag(this)">Luxurious</span>
+                <span class="ptag" onclick="toggleTag(this)">Friendly</span>
+                <span class="ptag" onclick="toggleTag(this)">Professional</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-full" onclick="generateBrandIdentity()">✨ Generate Brand Identity</button>
+          </div>
+          <div class="card" id="identityResults">
+            <h3 class="card-title">Generated Brand Identity</h3>
+            <div class="results-placeholder" id="identityPlaceholder">
+              <div class="placeholder-icon">✨</div>
+              <p>Fill in your business details and generate your brand identity</p>
+            </div>
+            <div class="identity-output hidden" id="identityOutput">
+              <div class="output-section">
+                <div class="output-label">Brand Names</div>
+                <div class="name-cards" id="brandNames">
+                  <div class="name-card"><span class="name">Restova</span><span class="name-note">Easy, memorable</span>
+                  </div>
+                  <div class="name-card"><span class="name">OrdaHQ</span><span class="name-note">Professional,
+                      tech</span></div>
+                  <div class="name-card"><span class="name">TableMind</span><span
+                      class="name-note">Industry-specific</span></div>
+                </div>
+              </div>
+              <div class="output-section">
+                <div class="output-label">Value Proposition</div>
+                <div class="output-text" id="valueProp">The all-in-one restaurant management platform that saves you 10+
+                  hours weekly with AI-powered ordering, inventory, and loyalty — so you can focus on the food.</div>
+              </div>
+              <div class="output-section">
+                <div class="output-label">Top Taglines</div>
+                <div class="tagline-list" id="taglines">
+                  <div class="tagline-item">"Where Every Order Counts"</div>
+                  <div class="tagline-item">"Smarter Restaurants. Happier Guests."</div>
+                  <div class="tagline-item">"From Kitchen to Customer — Simplified."</div>
+                </div>
+              </div>
+              <div class="output-section">
+                <div class="output-label">Brand Story</div>
+                <div class="output-text" id="brandStory">Born from the frustration of restaurant owners drowning in
+                  sticky notes and spreadsheets, we built Restova to give every small eatery the same powerful tools
+                  that enterprise chains use — without the enterprise price tag.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voice Tab -->
+      <div class="tab-content" id="tab-voice">
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Tone & Voice Settings</h3>
+            <div class="form-group">
+              <label class="form-label">Brand Name</label>
+              <input class="form-input" id="voiceBrandName" placeholder="Your brand name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Communication Style</label>
+              <div class="slider-group">
+                <div class="slider-row">
+                  <span>Formal</span>
+                  <input type="range" class="style-slider" id="formalSlider" min="0" max="100" value="40" />
+                  <span>Casual</span>
+                </div>
+                <div class="slider-row">
+                  <span>Serious</span>
+                  <input type="range" class="style-slider" id="seriousSlider" min="0" max="100" value="60" />
+                  <span>Playful</span>
+                </div>
+                <div class="slider-row">
+                  <span>Technical</span>
+                  <input type="range" class="style-slider" id="techSlider" min="0" max="100" value="30" />
+                  <span>Simple</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Content to Generate</label>
+              <select class="form-input form-select" id="voiceContentType">
+                <option>Social Media Post (Instagram)</option>
+                <option>LinkedIn Post</option>
+                <option>Email Newsletter</option>
+                <option>Product Description</option>
+                <option>Ad Copy</option>
+                <option>Blog Introduction</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Topic / Product</label>
+              <input class="form-input" id="voiceTopic" placeholder="e.g. New feature launch, Sale event..." />
+            </div>
+            <button class="btn-primary btn-full" onclick="generateVoice()">🎤 Generate Content</button>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Generated Content</h3>
+            <div class="results-placeholder" id="voicePlaceholder">
+              <div class="placeholder-icon">🎤</div>
+              <p>Configure your brand voice and generate on-brand content instantly</p>
+            </div>
+            <div class="voice-output hidden" id="voiceOutput">
+              <div class="output-section">
+                <div class="output-label-row">
+                  <span class="output-label">Generated Copy</span>
+                  <button class="copy-btn" onclick="copyText('voiceText')">📋 Copy</button>
+                </div>
+                <div class="output-text voice-text" id="voiceText">🚀 Big news! We just dropped our most-requested
+                  feature — and it's a game-changer for every restaurant owner out there. Real-time inventory alerts,
+                  directly on your phone. No more 86'ing items mid-service. ✅ Tap the link in bio to upgrade free today.
+                  #RestaurantTech #SmallBusiness #Restova</div>
+              </div>
+              <div class="sentiment-row">
+                <div class="sentiment-item">
+                  <div class="sentiment-label">Sentiment</div>
+                  <div class="sentiment-badge positive">😊 Positive</div>
+                </div>
+                <div class="sentiment-item">
+                  <div class="sentiment-label">Tone Match</div>
+                  <div class="tone-meter">
+                    <div class="tone-fill" style="width: 88%"></div>
+                    <span>88%</span>
+                  </div>
+                </div>
+                <div class="sentiment-item">
+                  <div class="sentiment-label">Readability</div>
+                  <div class="sentiment-badge green">Grade 7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Tab -->
+      <div class="tab-content" id="tab-content">
+        <div class="card">
+          <h3 class="card-title">AI Content Studio</h3>
+          <div class="content-grid">
+            <div class="content-tool-card" onclick="openContentTool('summarize')">
+              <div class="ct-icon">📄</div>
+              <div class="ct-label">Long-Text Summarizer</div>
+              <div class="ct-desc">Condense lengthy reports or articles into key insights</div>
+            </div>
+            <div class="content-tool-card" onclick="openContentTool('sentiment')">
+              <div class="ct-icon">💬</div>
+              <div class="ct-label">Sentiment Analyzer</div>
+              <div class="ct-desc">Analyze customer reviews, comments & brand perception</div>
+            </div>
+            <div class="content-tool-card" onclick="openContentTool('ideas')">
+              <div class="ct-icon">💡</div>
+              <div class="ct-label">Content Ideas Generator</div>
+              <div class="ct-desc">Get 20+ content ideas for blogs, social posts & videos</div>
+            </div>
+            <div class="content-tool-card" onclick="openContentTool('email')">
+              <div class="ct-icon">✉️</div>
+              <div class="ct-label">Email Writer</div>
+              <div class="ct-desc">Generate cold emails, newsletters, and sales sequences</div>
+            </div>
+          </div>
+
+          <!-- Dynamic Content Tool Area -->
+          <div class="content-tool-area" id="contentToolArea">
+            <div class="form-group">
+              <label class="form-label" id="contentInputLabel">Enter text to summarize</label>
+              <textarea class="form-input form-textarea tall" id="contentInput"
+                placeholder="Paste your text here..."></textarea>
+            </div>
+            <button class="btn-primary" onclick="processContent()">⚡ Process with AI</button>
+            <div class="content-output hidden" id="contentOutput">
+              <div class="output-label">AI Output</div>
+              <div class="output-text" id="contentResult"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Tab -->
+      <div class="tab-content" id="tab-visual">
+        <div class="card">
+          <h3 class="card-title">Visual Identity Builder</h3>
+          <div class="visual-grid">
+            <div class="color-section">
+              <div class="output-label">Brand Color Palette</div>
+              <div class="color-input-row">
+                <input class="form-input" id="colorKeyword"
+                  placeholder="Describe your brand emotion (e.g. trust, energy, luxury)" />
+                <button class="btn-secondary" onclick="generatePalette()">Generate</button>
+              </div>
+              <div class="palette-display" id="paletteDisplay">
+                <div class="color-swatch" style="background:#6366f1" data-color="#6366f1"><span>#6366f1</span></div>
+                <div class="color-swatch" style="background:#8b5cf6" data-color="#8b5cf6"><span>#8b5cf6</span></div>
+                <div class="color-swatch" style="background:#ec4899" data-color="#ec4899"><span>#ec4899</span></div>
+                <div class="color-swatch" style="background:#ffffff; border: 1px solid #333;" data-color="#ffffff"><span
+                    style="color:#000">#ffffff</span></div>
+                <div class="color-swatch" style="background:#0f0e17" data-color="#0f0e17"><span>#0f0e17</span></div>
+              </div>
+            </div>
+            <div class="font-section">
+              <div class="output-label">Typography Pairing</div>
+              <div class="font-cards" id="fontCards">
+                <div class="font-card">
+                  <div class="font-preview"
+                    style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700;">Space Grotesk
+                  </div>
+                  <div class="font-role">Headings · Bold · Modern</div>
+                </div>
+                <div class="font-card">
+                  <div class="font-preview" style="font-family: 'Inter', sans-serif; font-size: 1rem;">Inter Regular
+                  </div>
+                  <div class="font-role">Body text · Clean · Readable</div>
+                </div>
+              </div>
+            </div>
+            <div class="logo-section">
+              <div class="output-label">Logo Concepts</div>
+              <div class="logo-concepts" id="logoConcepts">
+                <div class="logo-concept">
+                  <div class="logo-preview wordmark">Br<span style="color:#6366f1">AI</span>nd</div>
+                  <div class="logo-type">Wordmark</div>
+                </div>
+                <div class="logo-concept">
+                  <div class="logo-preview monogram">B</div>
+                  <div class="logo-type">Monogram</div>
+                </div>
+                <div class="logo-concept">
+                  <div class="logo-preview abstract">⬡</div>
+                  <div class="logo-type">Abstract Mark</div>
+                </div>
+              </div>
+              <button class="btn-secondary" style="width:100%; margin-top: 1rem;" onclick="generateLogoIdeas()">🎨
+                Generate More Concepts</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STRATEGIC RECOMMENDATIONS ===== -->
+  <section class="section" id="recommendations">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" style="--badge-color: #4facfe;">🎯 Recommendation Engine</div>
+        <h2 class="section-title">AI-Driven <span class="gradient-text-cyan">Strategic Intelligence</span></h2>
+        <p class="section-subtitle">Market gaps, counter-positioning, pricing optimization, and audience growth
+          strategies</p>
+      </div>
+
+      <div class="rec-input-card card">
+        <div class="rec-inputs">
+          <div class="form-group">
+            <label class="form-label">Your Brand/Product</label>
+            <input class="form-input" id="recBrand" placeholder="Brand name or product" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Industry</label>
+            <select class="form-input form-select" id="recIndustry">
+              <option>Technology & SaaS</option>
+              <option>E-Commerce</option>
+              <option>Healthcare</option>
+              <option>Finance</option>
+              <option>Education</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Current Challenge</label>
+            <select class="form-input form-select" id="recChallenge">
+              <option>Low Brand Awareness</option>
+              <option>High Customer Churn</option>
+              <option>Pricing Pressure</option>
+              <option>Audience Engagement</option>
+              <option>Content Strategy</option>
+              <option>Differentiation</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="generateRecommendations()">🎯 Get AI Recommendations</button>
+        </div>
+      </div>
+
+      <div class="rec-results hidden" id="recResults">
+        <div class="rec-grid">
+          <div class="rec-card market-gap">
+            <div class="rec-card-header">
+              <div class="rec-icon">🏆</div>
+              <div>
+                <div class="rec-card-title">Market Gap Identified</div>
+                <div class="rec-card-sub">Untapped opportunity area</div>
+              </div>
+            </div>
+            <div class="rec-content" id="recMarketGap">
+              The mid-market segment ($50–$200/mo) is underserved. Competitors either target enterprise ($500+) or free
+              tools missing professional features. A focused mid-market play with white-glove onboarding could capture
+              15–20% market share in 18 months.
+            </div>
+            <div class="rec-action">
+              <span class="impact-badge high">🔥 High Impact</span>
+              <span class="effort-badge medium">⚡ Medium Effort</span>
+            </div>
+          </div>
+
+          <div class="rec-card counter-pos">
+            <div class="rec-card-header">
+              <div class="rec-icon">⚔️</div>
+              <div>
+                <div class="rec-card-title">Counter-Positioning</div>
+                <div class="rec-card-sub">How to position against leaders</div>
+              </div>
+            </div>
+            <div class="rec-content" id="recCounterPos">
+              While Market Leader X focuses on feature complexity, position your brand as "delightfully simple" —
+              emphasize 5-minute setup, zero learning curve, and human support. Use comparison pages targeting keywords
+              like "Competitor X alternative."
+            </div>
+            <div class="rec-action">
+              <span class="impact-badge high">🔥 High Impact</span>
+              <span class="effort-badge low">✅ Low Effort</span>
+            </div>
+          </div>
+
+          <div class="rec-card pricing-opt">
+            <div class="rec-card-header">
+              <div class="rec-icon">💰</div>
+              <div>
+                <div class="rec-card-title">Pricing Optimization</div>
+                <div class="rec-card-sub">Revenue maximization strategy</div>
+              </div>
+            </div>
+            <div class="rec-content" id="recPricing">
+              Implement price anchoring with a "Business" tier at $199/mo to make your core $79/mo plan feel affordable.
+              Add annual billing with 2 months free (17% discount) to reduce churn and improve cash flow. Consider a
+              usage-based add-on for power users.
+            </div>
+            <div class="rec-action">
+              <span class="impact-badge medium">📈 Medium Impact</span>
+              <span class="effort-badge low">✅ Low Effort</span>
+            </div>
+          </div>
+
+          <div class="rec-card content-plan">
+            <div class="rec-card-header">
+              <div class="rec-icon">📱</div>
+              <div>
+                <div class="rec-card-title">Content & Engagement Plan</div>
+                <div class="rec-card-sub">30-day action roadmap</div>
+              </div>
+            </div>
+            <div class="rec-content" id="recContent">
+              Week 1: Launch "Behind the Brand" LinkedIn series. Week 2: Publish competitor comparison blog post. Week
+              3: Host live Q&A on Instagram. Week 4: Release case study from a beta customer. Maintain 3x/week posting
+              cadence across channels.
+            </div>
+            <div class="priority-list" id="recActions">
+              <div class="priority-item">✅ Create comparison landing page</div>
+              <div class="priority-item">✅ Set up LinkedIn newsletter</div>
+              <div class="priority-item">✅ Record 3 short-form video testimonials</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INFLUENCER HUB ===== -->
+  <section class="section alt-section" id="influencer">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" style="--badge-color: #43e97b;">🤝 Influencer Hub</div>
+        <h2 class="section-title">AI-Matched <span class="gradient-text-green">Influencer Discovery</span></h2>
+        <p class="section-subtitle">Find, analyze, and connect with influencers perfectly aligned with your brand DNA
+        </p>
+      </div>
+
+      <div class="influencer-search card">
+        <div class="inf-search-row">
+          <div class="form-group">
+            <label class="form-label">Industry / Niche</label>
+            <select class="form-input form-select" id="infIndustry">
+              <option>Technology</option>
+              <option>Fashion & Beauty</option>
+              <option>Health & Fitness</option>
+              <option>Food & Cooking</option>
+              <option>Finance & Business</option>
+              <option>Travel</option>
+              <option>Gaming</option>
+              <option>Education</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Platform</label>
+            <select class="form-input form-select" id="infPlatform">
+              <option>Instagram</option>
+              <option>YouTube</option>
+              <option>TikTok</option>
+              <option>LinkedIn</option>
+              <option>Twitter/X</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Follower Range</label>
+            <select class="form-input form-select" id="infSize">
+              <option>Nano (1K–10K)</option>
+              <option>Micro (10K–100K)</option>
+              <option>Macro (100K–1M)</option>
+              <option>Mega (1M+)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Min. Engagement Rate</label>
+            <select class="form-input form-select" id="infEngagement">
+              <option>Any</option>
+              <option>3%+</option>
+              <option>5%+</option>
+              <option>8%+</option>
+              <option>10%+</option>
+            </select>
+          </div>
+          <button class="btn-primary inf-search-btn" onclick="findInfluencers()">🔍 Find Influencers</button>
+        </div>
+      </div>
+
+      <div class="influencer-results hidden" id="infResults">
+        <div class="results-toolbar">
+          <div class="results-count" id="infCount">18 influencers matched</div>
+          <div class="sort-controls">
+            <span>Sort by:</span>
+            <button class="sort-btn active" data-sort="match">Match Score</button>
+            <button class="sort-btn" data-sort="engagement">Engagement</button>
+            <button class="sort-btn" data-sort="followers">Followers</button>
+          </div>
+        </div>
+        <div class="influencer-grid" id="influencerGrid">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+
+      <!-- Outreach Generator -->
+      <div class="outreach-section" id="outreachSection">
+        <div class="card outreach-card">
+          <h3 class="card-title">✉️ AI Outreach Email Generator</h3>
+          <div class="outreach-form">
+            <div class="form-group">
+              <label class="form-label">Influencer Name</label>
+              <input class="form-input" id="outInfluencer" placeholder="@influencer_handle or full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Brand Name</label>
+              <input class="form-input" id="outBrand" placeholder="Your brand name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Collaboration Type</label>
+              <select class="form-input form-select" id="outCollabType">
+                <option>Sponsored Post</option>
+                <option>Product Review</option>
+                <option>Long-term Ambassador</option>
+                <option>Giveaway Collaboration</option>
+                <option>Affiliate Partnership</option>
+                <option>Event Co-host</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Offer / Compensation</label>
+              <input class="form-input" id="outOffer"
+                placeholder="e.g. $500 + free product, 15% affiliate, revenue share..." />
+            </div>
+            <button class="btn-primary" onclick="generateOutreach()">✉️ Generate Outreach Email</button>
+          </div>
+          <div class="outreach-result hidden" id="outreachResult">
+            <div class="output-label-row">
+              <span class="output-label">Generated Email</span>
+              <button class="copy-btn" onclick="copyText('outreachEmail')">📋 Copy Email</button>
+            </div>
+            <div class="email-preview" id="outreachEmail"></div>
+            <div class="campaign-ideas hidden" id="campaignIdeas">
+              <div class="output-label">💡 Campaign Ideas</div>
+              <div class="ideas-list" id="ideasList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">BrandGenius<span class="logo-ai">AI</span></span>
+        <p>Transforming businesses through intelligent branding automation.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Modules</div>
+          <a href="#competitor">Competitor Intel</a>
+          <a href="#brand-strategy">Brand Strategy</a>
+          <a href="#recommendations">Recommendations</a>
+          <a href="#influencer">Influencer Hub</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Platform</div>
+          <a href="#">Documentation</a>
+          <a href="#">API Access</a>
+          <a href="#">Pricing</a>
+          <a href="#">Case Studies</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BrandGenius AI. All rights reserved. Built with Generative AI.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loadingOverlay">
+    <div class="loading-card">
+      <div class="ai-loader">
+        <div class="ai-ring"></div>
+        <div class="ai-ring"></div>
+        <div class="ai-ring"></div>
+      </div>
+      <div class="loading-text" id="loadingText">AI is analyzing...</div>
+      <div class="loading-sub">Processing with NLP & Machine Learning</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
